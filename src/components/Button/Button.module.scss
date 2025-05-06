@@ -1,0 +1,28 @@
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+
+.btn{
+    outline: none;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0.8rem 1.8rem;
+    border-radius: 0.8rem;
+    margin-left: 1vw;
+    font-weight: bold;
+    &:hover{
+        opacity: 80%;
+    }
+
+    &-primary{
+        border-color: color("primary");
+        background-color: color("primary");
+        color: color("bg");
+    }
+    
+    &-secondary{
+        background-color: transparent;
+        color: color("secondary");
+        border-color: color("secondary");
+    }
+}

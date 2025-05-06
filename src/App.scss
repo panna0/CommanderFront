@@ -1,0 +1,9 @@
+@use "./styles/_variables.scss" as *;
+@use "./styles/_functions.scss" as *;
+
+body{
+  background-color: color("bg");
+  color: color("secondary");
+}
+
+
