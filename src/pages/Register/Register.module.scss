@@ -1,0 +1,96 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+
+
+.container{
+    @include vertical-flex;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(to bottom, color("bg"), rgba(0, 0, 0, 0.557));
+    background-size: cover;
+   
+
+}
+
+.btnContainer{
+    @include horizontal-flex;
+    justify-content: space-between;
+    width: inherit;
+    padding: 1.5rem 0;
+}
+
+.stepperForm{
+    @include vertical-flex;
+    justify-content: space-between;
+    height: inherit;
+    padding: 2.5rem;
+    
+    
+}
+
+.textContainer{
+    @include vertical-flex;
+    justify-content: center;
+    padding-bottom: 25px;
+
+    h3{
+        font-weight: normal;
+        margin: 0;
+        font-size: medium;
+        color: color('lightBorder');
+    }
+
+    h1{
+        margin: 10px;
+    }
+}
+
+.overlay{
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    //background: linear-gradient(to bottom, rgba(0,0,0), rgba(0, 0, 0, 0.557));
+    background-color: rgba(0, 0, 0, 0.389);
+}
+
+
+
+.formLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 300px;
+    min-width: 300px;
+    text-align: center;
+    height: 400px;
+
+    p{
+        color: color("lightBorder");
+    }
+    
+    a{
+        text-decoration: underline;
+        cursor: pointer;
+        color: white;
+
+        &:hover{
+            color: color("primary");
+        }
+    }
+
+    ul{
+        padding-left: 0;
+    }
+
+    li{
+        list-style: none;
+    }
+}
+
+.inputContainer{
+    @include vertical-flex;
+    gap: 10px;
+}
