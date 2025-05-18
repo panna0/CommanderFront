@@ -1,0 +1,55 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *;
+@use "./../../styles/_functions.scss" as *;
+
+.GenericInputDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    width: 300px;
+    max-width: 350px; 
+    margin: 0 8px 15px 8px ;
+    height: fit-content;
+    box-sizing: border-box;
+}
+
+.GenericInput{
+    padding: 8px;
+    border: 1px solid color("lightBorder");
+    border-radius: 5px;
+    width: 100%;
+    background-color: color("bgSecondary");
+    color: white;
+    box-sizing: border-box;
+
+    &::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px 1000px color("bgSecondary") inset !important;
+        -webkit-text-fill-color: white !important;
+    }
+
+    &:focus{
+        border-color: color("primary");
+        outline: none;
+        box-shadow: 0 0px 4px 0 rgba(170, 78, 78, 0.2), 0 0px 10px 0 #00ff33ba;
+        color: color("primary");
+    }
+}
+
+.errorDiv{
+    p{
+        margin: 0;
+        font-size: 0.8rem;
+    }
+}
+
+label{
+    font-weight: 600;
+    margin-left: 8px;
+}
