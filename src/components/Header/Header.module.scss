@@ -1,0 +1,14 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+header{
+    padding: 1rem 2rem;
+    justify-content: space-between;
+    @include horizontal-flex;
+    background-color: color("bgSecondary");
+    border-bottom: 1px solid color("border");
+    position: sticky;
+    top: 0;
+    z-index: 11;
+}
