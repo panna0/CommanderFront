@@ -4,17 +4,21 @@ import Home from './pages/Home/Home';
 import LandingPage from './pages/LandingPage/LandingPage';
 import NotFound from './pages/NotFound/NotFound';
 import BaseLayouts from './layouts/BaseLayouts/BaseLayouts';
+import Login from './pages/Login/Login';
+import LoginRegisterLayouts from './layouts/LoginRegisterLayouts/LoginRegisterLayouts';
+import Register from './pages/Register/Register';
+
 
 
 const router = createBrowserRouter([
   {
-    path: "/",  
-    element: <LandingPage /> 
-  },
-  {
-    path: "/app", 
+    path: "/", 
     element: <BaseLayouts />,
     children: [
+      {
+        index: true,  
+        element: <LandingPage /> 
+      },
       {
         path: "home",
         element: <Home />
@@ -22,9 +26,27 @@ const router = createBrowserRouter([
       {
         path: "*",
         element: <NotFound />
-      }
-    ]
-  }
+      },
+    ],
+
+  },
+
+  {
+    path: "/auth", 
+    element: <LoginRegisterLayouts />,
+    children: [
+      {
+        path: "login" ,
+        element: <Login /> 
+      },
+      {
+        path: "register" ,
+        element: <Register /> 
+      },
+    ],
+
+  },
+  
 ]);
 
 function App() {
