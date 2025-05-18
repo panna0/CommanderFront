@@ -8,7 +8,8 @@
     border-width: 1px;
     padding: 0.8rem 1.8rem;
     border-radius: 0.8rem;
-    margin-left: 1vw;
+   
+    
     font-weight: bold;
     &:hover{
         opacity: 80%;
@@ -24,5 +25,15 @@
         background-color: transparent;
         color: color("secondary");
         border-color: color("secondary");
+    }
+
+    &-small{
+       width: fit-content;
+    }
+
+    &-large{
+       width: inherit;
+       border-radius: 0.5rem;
+       margin: 1rem;
     }
 }
