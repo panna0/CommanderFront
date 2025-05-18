@@ -1,0 +1,17 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+.stepLabel {
+    color: white !important;
+  }
+  
+  .completedIcon {
+    color: color("primary") !important;
+  }
+  
+  .activeIcon {
+    color: color('lightBorder') !important;
+    
+  }
+  
