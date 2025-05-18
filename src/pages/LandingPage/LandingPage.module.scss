@@ -1,0 +1,57 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+
+.container{
+    @include vertical-flex;
+    overflow: hidden;
+    height: 120vh;
+    width: inherit;
+    position: fixed;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0), color("bg")), url("../../assets/images/woods.png");
+    background-size: cover;
+    cursor: none;
+    text-align: center;
+    
+    
+}
+
+.bigContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    height: 120vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+
+
+.subtitle{
+    font-size: 2rem;
+    font-weight: lighter;
+    font-style: italic;
+    width: 60vw;
+}
+
+.textContainer{
+    @include vertical-flex;
+    margin-bottom: 30vh;
+}
+
+
+.link{
+    font-size: 5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+    cursor: none;
+    width: 70vw;
+
+    &:hover{
+        color: color("primary");
+        cursor: none;
+    }
+}
