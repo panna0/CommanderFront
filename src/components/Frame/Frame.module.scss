@@ -1,0 +1,27 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *;
+@use "./../../styles/_functions.scss" as *;
+
+
+.frameLogin{
+    border: 1px solid color("border");
+    box-shadow: 0 0px 4px 0 rgba(170, 78, 78, 0.2), 0 0px 30px 1px #00ff33ba;
+    @include vertical-flex;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: rgba(169, 169, 169, 0.184); 
+    width: fit-content;
+    height: fit-content;
+}
+
+.bgLogin{
+    @include vertical-flex;
+    height: inherit;
+    width: inherit;
+    border-radius: 1rem;
+    padding: 3rem;
+    background-color: color("bg");
+    
+}
