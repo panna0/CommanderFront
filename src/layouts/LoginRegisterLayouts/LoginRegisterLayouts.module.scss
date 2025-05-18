@@ -1,0 +1,18 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+.backArrow{
+    @include horizontal-flex;
+    justify-content: space-around;
+    width: 160px;
+    height: fit-content;
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+    padding: 3rem;
+
+    h3{
+        color: color('primary');
+    }
+}
