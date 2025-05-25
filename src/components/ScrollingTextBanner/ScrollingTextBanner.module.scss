@@ -1,0 +1,30 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+
+.background{
+    overflow: hidden;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid color("primary");
+    border-left: none;
+    padding: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+   
+}
+
+
+.text{
+    font-size: 3rem;
+    font-weight: 800;
+    color: color('primary');
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.scrollingDiv{
+    display: inline-flex;
+    gap: 50px;
+    align-items: center;
+}

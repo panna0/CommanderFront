@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import style from "./LandingPage.module.scss"
 import { useRef, useState,} from "react";
 import { useNavigate } from "react-router-dom";
+import ScrollingTextBanner from "../../components/ScrollingTextBanner/ScrollingTextBanner";
 
 
 
@@ -18,6 +19,7 @@ const LandingPage = () => {
     const hoverText = "Let's start!"
     const containerRef = useRef(null);
     const [testo, setTesto] = useState(originalText);
+    const y = useTransform(scrollYProgress, [0, 1], ['90vh', '90vh']);
 
     const handleMouseEnter = () => {
         setTesto(hoverText);
@@ -43,6 +45,14 @@ const LandingPage = () => {
             </div>
             <ScrollUpDiv></ScrollUpDiv>
         </div>
+        <motion.div className={`${style.secondContainer}`}>
+            <ScrollingTextBanner/>
+        </motion.div>
+       
+       
+           
+       
+      
        
         
        </>
