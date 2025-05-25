@@ -24,8 +24,9 @@
 .stepperForm{
     @include vertical-flex;
     justify-content: space-between;
-    height: inherit;
+    height: 85%;
     padding: 2.5rem;
+    margin-top: 2%;
     
     
 }
@@ -33,7 +34,7 @@
 .textContainer{
     @include vertical-flex;
     justify-content: center;
-    padding-bottom: 25px;
+    padding-bottom: 10px;
 
     h3{
         font-weight: normal;
@@ -44,6 +45,7 @@
 
     h1{
         margin: 0 10px 10px 10px;
+        font-size: 1.5rem;
     }
 }
 
@@ -55,13 +57,15 @@
     background-color: rgba(0, 0, 0, 0.389);
 }
 
-
+.stepper{
+   z-index: 100;
+}
 
 .formLogin{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 300px;
     min-width: 300px;
     text-align: center;
@@ -94,5 +98,5 @@
 
 .inputContainer{
     @include vertical-flex;
-    gap: 10px;
+    height: 300px;
 }

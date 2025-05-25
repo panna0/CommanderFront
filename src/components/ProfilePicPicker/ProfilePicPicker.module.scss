@@ -16,13 +16,42 @@
     &img{
         position: absolute;
 
-        &:hover{
-            color: color('primary');
-        }
+    }
+}
+
+.picHovering{
+    
+    @include vertical-flex;
+    justify-content: center;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    background-size: cover;
+    border: 1px solid color("border");
+
+    &img{
+        position: absolute;
     }
 }
 
 .choose{
     opacity: 0%;
     position: absolute;
+}
+
+.pen{
+    opacity: 100%;
+}
+
+.penHover{
+    opacity: 0%;
+}
+
+.remove{
+    display: flex;
+}
+
+.removeHidden{
+    display: none;
 }

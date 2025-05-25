@@ -23,7 +23,7 @@ const HorizontalStepper = ({ steps, activeStep}) => {
   };
 
   return (
-    <Box sx={{ width: "30vw" }}>
+    <Box sx={{ width: "30vw"}} >
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label, index) => (
           <Step key={label}>

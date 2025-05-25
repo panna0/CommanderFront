@@ -25,7 +25,7 @@ const PasswordInput = ({showPassword, password, setPassword, setShowPassword, pa
                     <img src={showPassword?occhio:occhioChiuso} width={"20vw"}></img>
                 </button>
             </div>
-            <div className={`${styles.errorDiv}`}><p>{err[0]? err[0] : ""}</p></div>
+            <div className={`${styles.errorDiv}`}><p>{err? err : ""}</p></div>
           </div>
         </>
 

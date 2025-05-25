@@ -24,7 +24,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [checkPassword, setCheckPassword] = useState('');
     const [showCheckPassword, setShowCheckPassword] = useState(false);
-    const [isFormValid, setIsFormValid] = useState({name: false, surname: false, email: false, username: false, birthDate: false, password: {length: false, specialChar: false, notTooCommon: false, match: true}});
+    const [isFormValid, setIsFormValid] = useState({name: false, surname: false, email: false, username: false, birthDate: false, password: {length: false, specialChar: false, notTooCommon: false, match: true, lowerUpper: false}});
     const [showPassword, setShowPassword] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
     const [passwordErr, setPasswordErr] = useState('');
@@ -32,7 +32,7 @@ const Register = () => {
     const [emailErr, setEmailErr] = useState('');
     const navigate = useNavigate();
     const timerRef = useRef(null);
-
+    const [backgroundImageUrl, setBackgroundImageUrl] = useState(null); 
    
 
     const renderForm = () => {
@@ -86,7 +86,7 @@ const Register = () => {
         return(
             <form className={`${styles.formLogin}`} onSubmit={e => e.preventDefault()}>
                 <div className={`${styles.inputContainer}`}>
-                    <ProfilePicPicker></ProfilePicPicker>
+                    <ProfilePicPicker backgroundImageUrl={backgroundImageUrl} setBackgroundImageUrl={setBackgroundImageUrl}></ProfilePicPicker>
                     <GenericInput type={"text"} value={username} action={handleUsername} par={"Username"} isEditable={true} err={usernameErr}></GenericInput>
                 </div>
                 <div className={`${styles.btnContainer}`}>
@@ -107,7 +107,8 @@ const Register = () => {
                          isFormValid.password.length &&
                          isFormValid.password.specialChar &&
                          isFormValid.password.match &&
-                         isFormValid.password.notTooCommon;
+                         isFormValid.password.notTooCommon &&
+                         isFormValid.password.lowerUpper;
         }
 
         if(canProceed){
@@ -160,8 +161,10 @@ const Register = () => {
     useEffect(() => {
         const sCharRegex = /[#?!@$%^&*\\£€\\-]/;
         const lengthRegex = /^.{8,}$/;
+        const lowerUpperCaseRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
         const passwordLengthValid = lengthRegex.test(password);
         const passwordSCharValid = sCharRegex.test(password);
+        const lowerUpperCaseValid = lowerUpperCaseRegex.test(password);
         const passwordsMatch = password === checkPassword;
 
        console.log(isFormValid.password)
@@ -173,7 +176,7 @@ const Register = () => {
 
         if (password.trim() === '') {
             console.log(1)
-            setPasswordErr('Missing password');
+            setPasswordErr('Password is required');
             setIsFormValid(prevState => ({ ...prevState, password: {match: false, length: false, specialChar: false, notTooCommon: false}}));
             return;
         }else{
@@ -185,7 +188,7 @@ const Register = () => {
             setIsFormValid(prevState => ({ ...prevState, password: { ...prevState.password, match: true}}));
 
         }else{
-            setCheckPasswordErr('Passwords do not match')
+            setCheckPasswordErr('Password do not match')
             setIsFormValid(prevState => ({ ...prevState, password: { ...prevState.password, length: false}}));
         }
 
@@ -210,7 +213,16 @@ const Register = () => {
             setIsFormValid(prevState => ({ ...prevState, password: { ...prevState.password, length: true}}));
         }
 
-        console.log(password, passwordSCharValid)
+        if (!lowerUpperCaseValid) {
+            setPasswordErr('Password must contain at least one lowercase letter and one uppercase letter.');
+            setIsFormValid(prevState => ({ ...prevState, password: { ...prevState.password, lowerUpper: false}}));
+            return;
+        }else{
+            setPasswordErr('');
+            setIsFormValid(prevState => ({ ...prevState, password: { ...prevState.password, lowerUpper: true}}));
+        }
+
+        
         if (!passwordSCharValid) {
             console.log(4)
             setPasswordErr('Password must contain at least one special character.');
@@ -225,7 +237,7 @@ const Register = () => {
 
 
         timerRef.current = setTimeout(async () => {
-            setPasswordErr('Verificando la password...'); 
+            setPasswordErr('Verifying password...'); 
             try{
                 const result = await ApiManager.post('check-password/', {password});
             
@@ -256,6 +268,7 @@ const Register = () => {
             }
             }catch{
                 console.log("error")
+                setPasswordErr("Error during verification")
             }
             
            
@@ -328,7 +341,7 @@ const Register = () => {
           }
 
         if (username.trim() === '') {
-            setUsernameErr('Missing username');
+            setUsernameErr('Username is required');
             setIsFormValid(prevState => ({ ...prevState, username: false }));
         return;
         }
@@ -341,26 +354,31 @@ const Register = () => {
 
 
         timerRef.current = setTimeout(async () => {
-            setUsernameErr('Verificando lo username...'); 
-            const result = await ApiManager.post('check-username/', {username});
-            console.log(result)
-            const isTaken = result.data.username_taken;
-            const err = isTaken? "Username already taken." : ""
-            setUsernameErr(err); 
-            
-            if (isTaken) {
-                setIsFormValid(prevState =>(
-                    {...prevState, 
-                        username: false,}
-                )
-                );
-    
-            }else{
-                setIsFormValid(prevState =>(
-                    {...prevState, 
-                        username: true,}
-                )
-                );
+            setUsernameErr('Verifying username...'); 
+            try{
+                const result = await ApiManager.post('check-username/', {username});
+                console.log(result)
+                const isTaken = result.data.username_taken;
+                const err = isTaken? "Username already taken." : ""
+                setUsernameErr(err); 
+                
+                if (isTaken) {
+                    setIsFormValid(prevState =>(
+                        {...prevState, 
+                            username: false,}
+                    )
+                    );
+        
+                }else{
+                    setIsFormValid(prevState =>(
+                        {...prevState, 
+                            username: true,}
+                    )
+                    );
+                }
+               
+            }catch{
+                setUsernameErr("Error during verification")
             }
            
           }, 1000);
@@ -382,7 +400,7 @@ const Register = () => {
           }
 
         if (email.trim() === '') {
-            setEmailErr("Missing email");
+            setEmailErr("Email is required");
             setIsFormValid(prevState => ({ ...prevState, email: false }));
         return;
         }else{
@@ -421,6 +439,7 @@ const Register = () => {
             }
             }catch{
                 console.log("errore")
+                setEmailErr("Error during verification")
             }
             
             
@@ -442,7 +461,7 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         
-        if(isFormValid.name && isFormValid.surname && isFormValid.birthDate && isFormValid.email && isFormValid.username && isFormValid.password.length && isFormValid.password.notTooCommon && isFormValid.password.match && isFormValid.password.specialChar){
+        if(isFormValid.name && isFormValid.surname && isFormValid.birthDate && isFormValid.email && isFormValid.username && isFormValid.password.length && isFormValid.password.notTooCommon && isFormValid.password.match && isFormValid.password.specialChar && isFormValid.password.lowerUpper){
             const newUser = {
                     username: username,
                     password: password,
@@ -452,6 +471,7 @@ const Register = () => {
                     last_name: surname,
                     date_of_birth: birthDate
             }
+            navigate("/auth/login")
         try{
             const response = await ApiManager.post("register/", newUser);
             console.log(response.data)
@@ -467,7 +487,9 @@ const Register = () => {
         <>
         <div className={`${styles.container}`}>
             <div className={`${styles.stepperForm}`}>
-                <HorizontalStepper steps={["Personal info", "Credentials", "Profile"]} activeStep={currentPage}></HorizontalStepper>
+                <div className={`${styles.stepper}`}>
+                    <HorizontalStepper steps={["Personal info", "Credentials", "Profile"]} activeStep={currentPage}></HorizontalStepper>
+                </div>
             <Frame>
                 <div className={`${styles.textContainer}`}>
                         <h1>Sign up</h1>
