@@ -1,0 +1,90 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *;
+@use "./../../styles/_functions.scss" as *;
+
+.profileIcon{
+    @include horizontal-flex;
+    border: 1px solid color("lightBorder");
+    background-color: transparent;
+    padding: 8px 12px 8px 20px;
+    width: 110px;
+    justify-content: space-between;
+    border-radius: 100px;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+
+    &-pressed{
+        border: 1px solid color("primary");
+        box-shadow: 0 0px 4px 0 rgba(170, 78, 78, 0.2), 0 0px 5px 1px #00ff33ba;
+    }
+
+    &:hover{
+        border: 1px solid color("primary");
+        box-shadow: 0 0px 4px 0 rgba(170, 78, 78, 0.2), 0 0px 5px 1px #00ff33ba;
+    }
+}
+
+.pic{
+    border-radius: 100px;
+    border: 1px solid color("lightBorder");
+    
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    height: fit-content;
+    position: absolute;
+    background-color: color('bgSecondary');
+    border: 1px solid color("lightBorder");
+    align-self: flex-end;
+    margin-top: 70px;
+    border-radius: 1rem;
+    justify-content: space-between;
+    
+   
+}
+
+.separator{
+    background-color: color(border);
+    height: 1px;
+    width: 90%;
+    margin-left: 5%;
+    
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.list{
+    list-style: none;
+    padding: 0px;
+}
+
+.listItem{
+    padding: 8px;
+    margin-left: 10px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+
+    &:hover{
+        color: color('primary');
+    }
+
+    &-bold{
+        font-weight: bold;
+    }
+    
+   
+    &-logout{
+        
+        text-decoration: underline;
+
+        &:hover{
+            color: color('error');
+        }
+    }
+
+}
