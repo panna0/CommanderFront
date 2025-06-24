@@ -8,7 +8,7 @@ import Button from '../../components/Button/Button';
 import Frame from '../../components/Frame/Frame';
 import HorizontalStepper from '../../components/Stepper/HorizontalStepper';
 import ProfilePicPicker from '../../components/ProfilePicPicker/ProfilePicPicker';
-
+import { useAuth } from '../../context/AuthContext';
 import ApiManager from '../../services/ApiManager';
 
 
@@ -33,7 +33,9 @@ const Register = () => {
     const navigate = useNavigate();
     const timerRef = useRef(null);
     const [backgroundImageUrl, setBackgroundImageUrl] = useState(null); 
+    
    
+    const { register } = useAuth();
 
     const renderForm = () => {
         switch(currentPage) {
@@ -469,15 +471,15 @@ const Register = () => {
                     email: email,
                     first_name: name,
                     last_name: surname,
-                    date_of_birth: birthDate
+                    date_of_birth: birthDate,
+                    
             }
-            navigate("/auth/login")
-        try{
-            const response = await ApiManager.post("register/", newUser);
-            console.log(response.data)
-        }catch(error){
-            console.error(error.response.data.message || "errore sulla pagina di login");
-        }
+            console.log(newUser);
+       
+            const response = await register(newUser);
+            navigate('/auth/login')
+            
+       
         }
     }
 

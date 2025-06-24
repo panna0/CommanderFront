@@ -7,7 +7,12 @@ class ApiManager {
 	initialize = async () => {
 		const token = Cookies.get("accessToken")
 		// this.axiosClient.defaults.baseURL = 'https://www.thecocktaildb.com/api/json/v1/1/';
-		this.axiosClient.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+		//this.axiosClient.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+		this.axiosClient.defaults.baseURL = 'http://5.189.158.70:8000/api/';
+        this.axiosClient.defaults.headers = {
+            "Content-Type": "application/json",
+            // "Authorization": `Token ${token}`,
+        }
 		if (token) {
 			this.axiosClient.defaults.headers = {
 				"Content-Type": "application/json",
@@ -26,6 +31,8 @@ class ApiManager {
 	post = async (URL, payload) => {
 		await this.initialize();
 		console.log(payload);
+        console.log(URL);
+        
 		
 		return this.axiosClient.post(URL, payload).then(response => response);
 	};

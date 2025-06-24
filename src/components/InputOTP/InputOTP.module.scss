@@ -1,0 +1,32 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+
+
+.customOtpInput {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 0.5rem;
+    border: 1px solid color('lightBorder');
+    font-size: 20px;
+    text-align: center;
+    transition: all 0.2s ease;
+    outline: none;
+    margin: 0 4px;
+    color: color('secondary');
+
+    &:focus{
+        border-color: color( 'primary');
+        box-shadow: 0 0px 3px 1px #00ff33ba;
+    }
+}
+
+
+
+.inputOtpWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
