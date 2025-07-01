@@ -1,0 +1,32 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+.container{
+    @include horizontal-flex;
+    justify-content: space-around;
+    background-image: linear-gradient(to top, #0a0a0a, color(bgSecondary));
+   
+    
+    align-items: center;
+    height: 90vh;
+}
+
+.leftContainer{
+    width: 25vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 40vh;
+    h1{
+        font-size: 3rem;
+    }
+    h3{
+        font-weight: lighter;
+        font-style: italic;
+        font-size: 1.5rem;
+    }
+    h2{
+        
+    }
+}
