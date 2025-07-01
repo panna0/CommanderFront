@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Button.module.scss"
+import {motion} from "motion/react"
 
 const Button = ({children, color, size, action}) => {
     
@@ -18,11 +19,14 @@ const Button = ({children, color, size, action}) => {
     ? styles["btn-small"]
     : size === "large"
         ? styles["btn-large"]
+        : size === "rounded" 
+        ? styles["btn-rounded"]
         : "";
 
     return(
-
-       <button className={`${styles.btn} ${colorClass} ${sizeClass}`} onClick={() => action()}>{children}</button> //children.props o const {children} = a props e solo {children}
+        <motion.div whileHover={{ scale: 1.05 }}>
+       <button className={`${styles.btn} ${colorClass} ${sizeClass}`} onClick={() => action()} type="button">{children}</button> 
+       </motion.div>
     );
 };
 
