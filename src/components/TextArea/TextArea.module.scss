@@ -1,0 +1,70 @@
+@use "./../../styles/_mixin.scss" as *;
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+
+.TextAreaDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    width: 450px;
+    margin: 0 8px 10px 8px ;
+    height: fit-content;
+    box-sizing: border-box;
+}
+
+
+
+.TextArea{
+    padding: 8px;
+    border: 1px solid color("lightBorder");
+    border-radius: 5px;
+    width: 450px;
+    height: 150px;
+    background-color: color("bgSecondary");
+    color: white;
+    box-sizing: border-box;
+
+    &::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px 1000px color("bgSecondary") inset !important;
+        -webkit-text-fill-color: white !important;
+    }
+
+    &:focus-within {
+        border-color: color("primary"); 
+        box-shadow: 0 0px 4px 0 rgba(170, 78, 78, 0.2), 0 0px 10px 0 #00ff33ba; 
+    }
+
+    textarea{
+        background-color: color('bgSecondary');
+        border: none;
+        width: 430px;
+        height: 100px;
+        resize: none;
+
+        &:focus{
+            outline: none; 
+            color: color("primary"); 
+        }
+        
+    }
+
+    h5{
+        width: 100%;
+        text-align: end;
+        margin: 5px 0;
+        font-weight: 200;
+    }
+}
+
+label{
+    font-weight: 600;
+    margin-left: 8px;
+}
