@@ -490,7 +490,7 @@ const Register = () => {
         <div className={`${styles.container}`}>
             <div className={`${styles.stepperForm}`}>
                 <div className={`${styles.stepper}`}>
-                    <HorizontalStepper steps={["Personal info", "Credentials", "Profile"]} activeStep={currentPage}></HorizontalStepper>
+                    <HorizontalStepper steps={["Personal info", "Credentials", "Profile"]} activeStep={currentPage} width={'30vw'}></HorizontalStepper>
                 </div>
             <Frame>
                 <div className={`${styles.textContainer}`}>
