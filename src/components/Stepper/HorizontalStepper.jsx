@@ -7,8 +7,8 @@ import StepLabel from "@mui/material/StepLabel";
 import StepIcon from "@mui/material/StepIcon";
 import { color } from "motion";
 
-const HorizontalStepper = ({ steps, activeStep}) => {
-  // Custom Step Icon Component
+const HorizontalStepper = ({ steps, activeStep, width}) => {
+  
   const CustomStepIcon = (props) => {
     const { active, completed, className } = props;
 
@@ -23,8 +23,8 @@ const HorizontalStepper = ({ steps, activeStep}) => {
   };
 
   return (
-    <Box sx={{ width: "30vw"}} >
-      <Stepper activeStep={activeStep} alternativeLabel>
+    <Box sx={{ width: width}} >
+      <Stepper activeStep={activeStep} >
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel
