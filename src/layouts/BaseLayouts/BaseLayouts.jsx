@@ -12,14 +12,14 @@ function BaseLayouts() { //è come una classe ma è una funzione
 
 
     return (
-      <div>
+      <div className={`${styles.bigContainer} `}>
         <Header>
         <div>
          <Button color={"primary"} size={"small"} action={() => navigate('/auth/login')}>login</Button>
 
         </div>
         </Header>
-        <div className={`${styles.container}`}>
+        <div className={`${styles.container} `}>
           <Outlet/>
         </div>
       </div>
