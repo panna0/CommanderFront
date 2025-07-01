@@ -15,6 +15,7 @@ const GenericInput = ({type, value, action, par, max, isEditable, err}) => {
             value={value} 
             onChange={(e) => action(e, par)}
             readOnly={isEditable? false : true}
+            disabled={isEditable? false : true}
             />
             <div className={`${styles.errorDiv}`}><p>{err}</p></div>
         </div>
