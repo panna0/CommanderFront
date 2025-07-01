@@ -1,0 +1,16 @@
+@use "./../../styles/_variables.scss" as *; 
+@use "./../../styles/_functions.scss" as *;
+
+.animatedBackgroundContainer {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh;
+    overflow: hidden; 
+    z-index: -1; 
+    pointer-events: none; 
+    background-image: linear-gradient(to top, #0a0a0a, color(bgSecondary));
+
+
+}
